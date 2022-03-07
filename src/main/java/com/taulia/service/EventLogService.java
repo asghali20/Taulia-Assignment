@@ -35,13 +35,7 @@ public class EventLogService {
     
      public  Map<LocalDateTime, Event> eventSortedMap = new TreeMap<>();
      Logger logger = LoggerFactory.getLogger(EventLogService.class);
-     /*
-     To speed up processing large CSV files in terms of reading/ writing some recomendations:
-        - Using univocity parser https://www.univocity.com/ 
-        - while reading CSV file wrapping the file reader with java.io.BufferedReader
-        - I would think handling and manpulating a large amount of data can requrite some sort of an in memory database
-          or document database like mongoDB  big, which will provide some improvment for faster transactions, Multi user concurrency
-     */
+
   
   
     /**
