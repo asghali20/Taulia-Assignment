@@ -1,0 +1,51 @@
+apply plugin: 'java'
+apply plugin: 'application'
+apply plugin: 'idea'
+
+
+dependencies {
+    testImplementation     'junit:junit:4.13'
+}
+
+
+buildscript {
+    repositories {
+        jcenter()
+    }
+    
+}
+repositories {
+    mavenCentral()
+}
+configurations {
+    compileOnly {
+        extendsFrom annotationProcessor
+    }
+}
+configurations {
+    all {
+        exclude group: 'org.springframework.boot', module: 'spring-boot-starter-logging'
+    }
+}
+configurations.all { 
+    exclude group: 'org.apache.logging.log4j'
+
+}
+
+dependencies {
+
+    compile('org.springframework.boot:spring-boot-starter-web:2.3.4.RELEASE')
+    compile('org.springframework.boot:spring-boot-starter-log4j2:2.3.4.RELEASE')
+
+  
+    implementation 'com.fasterxml.jackson.core:jackson-databind:2.0.1'
+    implementation group: 'com.opencsv', name: 'opencsv', version: '3.7'
+    implementation 'org.slf4j:slf4j-simple:1.7.21'
+    testImplementation('org.springframework.boot:spring-boot-starter-test:2.3.4.RELEASE') 
+    testImplementation     'junit:junit:4.13'
+
+}
+
+test {
+    useJUnitPlatform()
+}
